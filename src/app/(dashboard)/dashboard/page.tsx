@@ -1,3 +1,5 @@
+import { ModeToggle } from "@components/mode-toggle"
+import { getUserBySession } from "@server/user"
 import {
   Card,
   CardContent,
@@ -8,9 +10,14 @@ import {
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
-export default function Dashboard() {
+export default async function Dashboard() {
+  const user = await getUserBySession()
   return (
     <div>
+      <h1 className="text-muted-foreground">
+        Welcome Back <strong className="text-foreground">{user?.name}</strong>
+      </h1>
+      <ModeToggle />
       <div className="my-4 grid gap-4 md:grid-cols-3">
         <Card>
           <CardHeader>
