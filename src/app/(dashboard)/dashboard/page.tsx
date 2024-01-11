@@ -1,5 +1,3 @@
-import Link from "next/link"
-import { Icons } from "@components/icons"
 import {
   Card,
   CardContent,
@@ -13,7 +11,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 export default function Dashboard() {
   return (
     <div>
-      <div className="my-4 grid grid-cols-3 gap-4">
+      <div className="my-4 grid gap-4 md:grid-cols-3">
         <Card>
           <CardHeader>
             <CardTitle>Views</CardTitle>
@@ -43,20 +41,29 @@ export default function Dashboard() {
         </Card>
       </div>
       <div className="mx-auto max-w-lg">
-        <div className="mb-4 space-y-2">
+        <div className="mb-2 space-y-2">
           <h3 className="text-xl font-semibold">Activity</h3>
           <hr className="w-20 rounded-full border-2 border-primary" />
         </div>
-        <div className="flex items-center gap-3">
-          <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-          <h2 className="font-semibold">Soheil Ghanbary</h2>
-          <p className="text-muted-foreground">has been liked your portfolio</p>
-          <p className="text-sm text-muted-foreground">3w ago</p>
-        </div>
+        <ActivityItem />
+        <ActivityItem />
+        <ActivityItem />
+        <ActivityItem />
       </div>
     </div>
   )
 }
+
+const ActivityItem = () => (
+  <div className="flex items-center gap-2.5 p-2">
+    <Avatar className="size-7 md:size-8">
+      <AvatarImage src="https://github.com/shadcn.png" />
+      <AvatarFallback>CN</AvatarFallback>
+    </Avatar>
+    <h2 className="text-xs font-semibold md:text-base">Soheil</h2>
+    <p className="flex-1 text-xs text-muted-foreground md:text-base">
+      has been liked your portfolio
+    </p>
+    <p className="text-xs text-muted-foreground md:text-sm">3w ago</p>
+  </div>
+)

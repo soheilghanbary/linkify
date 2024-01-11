@@ -6,7 +6,7 @@ import { Icons } from "@components/icons"
 import { cn } from "@lib/utils"
 
 export const Navigation = () => (
-  <div className="mx-auto grid max-w-lg grid-cols-4 items-center gap-1 rounded-full border p-1.5 shadow">
+  <div className="mx-auto flex max-w-lg items-center gap-2 overflow-x-scroll rounded-full border p-1.5 shadow md:grid md:grid-cols-4">
     <NavigationItem label="Dashboard" href="/dashboard" icon={Icons.rocket} />
     <NavigationItem label="Editor" href="/editor" icon={Icons.new} />
     <NavigationItem label="Templates" href="/templates" icon={Icons.projects} />

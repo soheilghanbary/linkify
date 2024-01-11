@@ -11,7 +11,7 @@ export default function EditorPage() {
   return (
     <>
       <Tabs defaultValue="preview" className="mx-auto my-4 max-w-sm">
-        <TabsList className="grid grid-cols-2">
+        <TabsList className="mb-4 grid grid-cols-2">
           <TabsTrigger value="editor">Editor</TabsTrigger>
           <TabsTrigger value="preview">Preview</TabsTrigger>
         </TabsList>
@@ -21,7 +21,7 @@ export default function EditorPage() {
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
-            <h2 className="text-lg font-semibold text-gray-700">
+            <h2 className="text-lg font-semibold text-foreground">
               Soheil Ghanbary
             </h2>
             <p className="rounded-full border bg-muted px-2 py-1 text-sm text-muted-foreground">

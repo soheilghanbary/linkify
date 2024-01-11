@@ -2,16 +2,16 @@ import { Icons } from "@components/icons"
 import { useSortable } from "@dnd-kit/sortable"
 import { CSS } from "@dnd-kit/utilities"
 import { Button } from "@ui/button"
-import { Input } from "@ui/input"
-
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@ui/drawer"
+import { Input } from "@ui/input"
 
 type LinkProps = {
   id: number
@@ -19,14 +19,8 @@ type LinkProps = {
 }
 
 export function SortableItem({ id, url }: LinkProps) {
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-    setActivatorNodeRef,
-  } = useSortable({ id })
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id })
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -37,11 +31,37 @@ export function SortableItem({ id, url }: LinkProps) {
     <div
       ref={setNodeRef}
       style={style}
-      {...attributes}
-      className="flex items-center gap-3 rounded-lg border p-2 shadow-sm"
+      className="flex touch-none items-center gap-3 rounded-lg border p-2 shadow-sm"
     >
       <span className="line-clamp-1 flex-1">{url}</span>
-      <Dialog>
+      <Drawer>
+        <DrawerTrigger>
+          <Button
+            onClick={() => console.log("hello world")}
+            variant={"secondary"}
+            size={"icon"}
+          >
+            <Icons.link className="size-5" />
+          </Button>
+        </DrawerTrigger>
+        <DrawerContent>
+          <DrawerHeader>
+            <DrawerTitle>Edit Link</DrawerTitle>
+          </DrawerHeader>
+          <div className="flex items-center gap-4 px-4">
+            <Input type="text" placeholder="https://url" className="flex-1" />
+            <Button>Save</Button>
+          </div>
+          <DrawerFooter>
+            <DrawerClose>
+              <Button variant="outline" className="w-full">
+                Cancel
+              </Button>
+            </DrawerClose>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+      {/* <Dialog>
         <DialogTrigger asChild>
           <Button
             onClick={() => console.log("hello world")}
@@ -60,13 +80,8 @@ export function SortableItem({ id, url }: LinkProps) {
             <Button>Save</Button>
           </div>
         </DialogContent>
-      </Dialog>
-      <Button
-        variant={"outline"}
-        size={"icon"}
-        ref={setActivatorNodeRef}
-        {...listeners}
-      >
+      </Dialog> */}
+      <Button variant={"outline"} size={"icon"} {...listeners} {...attributes}>
         <Icons.drag className="size-4" />
       </Button>
     </div>
