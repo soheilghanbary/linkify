@@ -1,14 +1,16 @@
-import { TextField } from "@components/common/TextField"
-import { Icons } from "@components/icons"
-import { Button } from "@ui/button"
+import { getUserBySession } from "@server/user"
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-import { LinkList } from "./link-list"
+import { EditForm } from "./edit-form"
 import { Preview } from "./preview"
-import { UploadImage } from "./upload-image"
 
-export default function EditorPage() {
+export default async function EditorPage() {
+  const user = (await getUserBySession()) as {
+    name: string
+    title: string
+    image: string
+  }
   return (
     <>
       <Tabs defaultValue="preview" className="mx-auto my-4 max-w-sm">
@@ -20,16 +22,11 @@ export default function EditorPage() {
           <Preview />
         </TabsContent>
         <TabsContent value="editor">
-          <div className="space-y-4">
-            <UploadImage />
-            <TextField label="Name" />
-            <TextField label="Title" />
-            <Button variant={"outline"}>
-              <Icons.link className="mr-2.5 size-5" />
-              Add Link
-            </Button>
-            <LinkList />
-          </div>
+          <EditForm
+            name={user.name}
+            title={user.title}
+            initialPath={user.image}
+          />
         </TabsContent>
       </Tabs>
     </>

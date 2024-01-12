@@ -2,9 +2,11 @@ import "@styles/app.css"
 
 import type { Metadata } from "next"
 import { font } from "@assets/fonts"
+import { JotaiProvider } from "@components/providers/jotai-provider"
 import { QueryProvider } from "@components/providers/QueryProvider"
 import { ThemeProvider } from "@components/providers/theme-provider"
 import { siteConfig } from "@config/site"
+import { EdgeStoreProvider } from "@lib/edgestore"
 import { cn } from "@lib/utils"
 import { Toaster } from "@ui/sonner"
 
@@ -37,15 +39,19 @@ export default function RootLayout({
         className={cn("min-h-screen bg-background antialiased", font.className)}
         suppressHydrationWarning
       >
-        <QueryProvider>
-          <ThemeProvider
-            attribute="class"
-            enableColorScheme
-            disableTransitionOnChange
-          >
-            <section className="container mx-auto p-2">{children}</section>
-          </ThemeProvider>
-        </QueryProvider>
+        <EdgeStoreProvider>
+          <QueryProvider>
+            <ThemeProvider
+              attribute="class"
+              enableColorScheme
+              disableTransitionOnChange
+            >
+              <JotaiProvider>
+                <section className="container mx-auto p-2">{children}</section>
+              </JotaiProvider>
+            </ThemeProvider>
+          </QueryProvider>
+        </EdgeStoreProvider>
         <Toaster />
       </body>
     </html>

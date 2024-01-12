@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { atomLinks, useLinksAtom } from "@atoms/links.atom"
 import {
   closestCenter,
   DndContext,
@@ -15,10 +15,11 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable"
+import { HydrateAtoms } from "@helpers/atom-hydration"
 
 import { SortableItem } from "./link-item"
 
-const links = [
+const initialLinks = [
   {
     id: 1,
     url: "https://github.com/soheilghanbary",
@@ -34,7 +35,15 @@ const links = [
 ]
 
 export const LinkList = () => {
-  const [items, setItems] = useState(links)
+  return (
+    <HydrateAtoms initialValues={[[atomLinks, initialLinks]]}>
+      <Links />
+    </HydrateAtoms>
+  )
+}
+
+const Links = () => {
+  const { links: items, setLinks: setItems } = useLinksAtom()
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {

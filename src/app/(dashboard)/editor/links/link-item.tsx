@@ -31,11 +31,11 @@ export function SortableItem({ id, url }: LinkProps) {
     <div
       ref={setNodeRef}
       style={style}
-      className="flex touch-none items-center gap-3 rounded-lg border p-2 shadow-sm"
+      className="flex touch-none items-center gap-3 rounded-lg border bg-background p-2 shadow-sm"
     >
       <span className="line-clamp-1 flex-1">{url}</span>
       <Drawer>
-        <DrawerTrigger>
+        <DrawerTrigger asChild>
           <Button
             onClick={() => console.log("hello world")}
             variant={"secondary"}

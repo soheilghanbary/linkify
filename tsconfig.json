@@ -34,6 +34,7 @@
       "@components/*": ["./src/components/*"],
       "@contexts/*": ["./src/contexts/*"],
       "@actions/*": ["./src/actions/*"],
+      "@atoms/*": ["./src/atoms/*"],
       "@/*": ["./src/*"]
     }
   },

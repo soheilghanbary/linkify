@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 export const Preview = async () => {
   const user = await getUserBySession()
   return (
-    <div className="flex flex-col items-center justify-center gap-2">
+    <div className="flex flex-col items-center justify-center gap-3">
       <Avatar className="size-24">
         <AvatarImage src={user?.image!} />
         <AvatarFallback>CN</AvatarFallback>
