@@ -46,13 +46,11 @@ export default function RootLayout({
               enableColorScheme
               disableTransitionOnChange
             >
-              <JotaiProvider>
-                <section className="container mx-auto p-2">{children}</section>
-              </JotaiProvider>
+              <JotaiProvider>{children}</JotaiProvider>
+              <Toaster />
             </ThemeProvider>
           </QueryProvider>
         </EdgeStoreProvider>
-        <Toaster />
       </body>
     </html>
   )

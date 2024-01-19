@@ -13,7 +13,7 @@ export const TextField = forwardRef(function MyInput(
   return (
     <div className="grid gap-1.5 [&>label]:text-sm">
       <Label>{label}</Label>
-      <Input type="text" ref={ref} {...rest} />
+      <Input type="text" autoComplete="off" ref={ref} {...rest} />
     </div>
   )
 })

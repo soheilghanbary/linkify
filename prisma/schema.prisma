@@ -47,7 +47,7 @@ model User {
   title String? @default("")
   bio   String? @default("")
   phone String? @default("")
-  links Json?
+  links Json
 }
 
 model VerificationToken {

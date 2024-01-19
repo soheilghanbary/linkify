@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useLinksAtom } from "@atoms/links.atom"
 import { Icons } from "@components/icons"
+import { updateUserLinks } from "@server/user"
 import { Button } from "@ui/button"
 import {
   Dialog,
@@ -15,9 +16,14 @@ import { toast } from "sonner"
 export const AddLink = () => {
   const [open, setOpen] = useState(false)
   const [url, setUrl] = useState("")
-  const { addLink } = useLinksAtom()
-  const onSubmit = () => {
+  const { addLink, links } = useLinksAtom()
+  const onSubmit = async () => {
     addLink(url)
+    const res = await updateUserLinks([
+      ...links,
+      { id: new Date().getMilliseconds().toString(), url },
+    ])
+    console.log(res)
     toast.success("Link added successfully")
     setOpen(false)
   }

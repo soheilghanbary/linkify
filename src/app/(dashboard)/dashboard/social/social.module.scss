@@ -1,0 +1,11 @@
+.social-box {
+  @apply flex flex-col items-center justify-center gap-3 rounded-md p-4 ring-primary duration-150;
+
+  &:hover {
+    @apply bg-muted ring-2;
+  }
+
+  &:active {
+    @apply scale-90;
+  }
+}

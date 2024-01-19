@@ -22,7 +22,6 @@ export default async function Dashboard() {
         <Card>
           <CardHeader>
             <CardTitle>Views</CardTitle>
-            <CardDescription>Card Description</CardDescription>
           </CardHeader>
           <CardContent>
             <p>+34321</p>
@@ -31,7 +30,6 @@ export default async function Dashboard() {
         <Card>
           <CardHeader>
             <CardTitle>Likes</CardTitle>
-            <CardDescription>Card Description</CardDescription>
           </CardHeader>
           <CardContent>
             <p>+34321</p>
@@ -39,15 +37,14 @@ export default async function Dashboard() {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Last Updated</CardTitle>
-            <CardDescription>Card Description</CardDescription>
+            <CardTitle>Clicks</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>2024/08/11 12:43 pm</p>
+            <p>412K</p>
           </CardContent>
         </Card>
       </div>
-      <div className="mx-auto max-w-lg">
+      <div>
         <div className="mb-2 space-y-2">
           <h3 className="text-xl font-semibold">Activity</h3>
           <hr className="w-20 rounded-full border-2 border-primary" />

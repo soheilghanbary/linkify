@@ -53,7 +53,6 @@ export const EditForm = ({ initialPath, name, title }: Schema) => {
           <AddLink />
         </div>
       </form>
-      <LinkList />
     </div>
   )
 }

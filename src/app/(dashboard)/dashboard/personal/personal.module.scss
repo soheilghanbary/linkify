@@ -1,0 +1,34 @@
+.title {
+  @apply relative text-2xl font-semibold text-primary;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 4px;
+    border-radius: 999px;
+    background-color: hsl(var(--primary));
+    bottom: -0.5rem;
+    left: 0;
+  }
+}
+
+.figure {
+  @apply relative mx-auto flex size-24 cursor-pointer items-center justify-center rounded-full border-2 border-dashed ring-offset-2 ring-offset-background transition-all;
+
+  &:hover {
+    @apply bg-muted ring-2 ring-primary;
+  }
+
+  img {
+    @apply size-full rounded-full object-cover duration-700;
+  }
+
+  &:active {
+    @apply scale-90;
+  }
+}
+
+.image-loader {
+  @apply scale-105 blur;
+}

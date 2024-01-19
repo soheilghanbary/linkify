@@ -1,0 +1,19 @@
+.sidebar {
+  @apply sticky top-0 mt-4 h-full min-h-screen w-60 space-y-6;
+}
+
+.sidebar-body {
+  @apply grid gap-1;
+}
+
+.sidebar-header {
+  @apply flex items-center gap-2 px-3 text-lg font-black;
+}
+
+.sidebar-item {
+  @apply flex items-center gap-3.5 rounded-md px-3 py-2 font-medium text-muted-foreground duration-150;
+
+  &:hover {
+    @apply bg-muted text-foreground;
+  }
+}

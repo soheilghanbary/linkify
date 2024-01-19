@@ -34,9 +34,9 @@ const initialLinks = [
   },
 ]
 
-export const LinkList = () => {
+export const LinkList = ({ links }) => {
   return (
-    <HydrateAtoms initialValues={[[atomLinks, initialLinks]]}>
+    <HydrateAtoms initialValues={[[atomLinks, links]]}>
       <Links />
     </HydrateAtoms>
   )
@@ -51,17 +51,19 @@ const Links = () => {
     })
   )
   return (
-    <DndContext
-      sensors={sensors}
-      collisionDetection={closestCenter}
-      onDragEnd={handleDragEnd}
-    >
-      <SortableContext items={items} strategy={verticalListSortingStrategy}>
-        {items.map((link) => (
-          <SortableItem key={link.id} {...link} />
-        ))}
-      </SortableContext>
-    </DndContext>
+    <div className="mt-2 space-y-3">
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCenter}
+        onDragEnd={handleDragEnd}
+      >
+        <SortableContext items={items} strategy={verticalListSortingStrategy}>
+          {items.map((link) => (
+            <SortableItem key={link.id} {...link} />
+          ))}
+        </SortableContext>
+      </DndContext>
+    </div>
   )
 
   function handleDragEnd(event: any) {

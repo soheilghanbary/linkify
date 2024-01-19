@@ -3,6 +3,7 @@ import { getUserBySession } from "@server/user"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 import { EditForm } from "./edit-form"
+import { LinkList } from "./links/link-list"
 import { Preview } from "./preview"
 
 export default async function EditorPage() {
@@ -27,6 +28,7 @@ export default async function EditorPage() {
             title={user.title}
             initialPath={user.image}
           />
+          <LinkList links={user.links} />
         </TabsContent>
       </Tabs>
     </>
